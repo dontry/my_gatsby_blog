@@ -1,7 +1,22 @@
 module.exports = {
-    "extends": "airbnb",
-    "installedESLint": true,
+    "extends": ["eslint:recomended"],
     "plugins": [
-        "react"
-    ]
+        "react",
+        "import",
+        "jsx-a11y",
+        "material-ui",
+        "prettier"
+    ],
+    "env": {
+        "es6": true,
+        "browser": true,
+        "node": true
+    },
+    "parserOptions": {
+        "ecmaVersion": 7,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    }
 };

@@ -9,12 +9,21 @@ const IndexPage = ({ data }) => {
       {posts.map(({ node: post }) => {
         const { frontmatter } = post
         return (
-          <div>
+          <div key={frontmatter.title}>
             <h2>
               <Link to={frontmatter.path}>{frontmatter.title}</Link>
             </h2>
             <p>{frontmatter.date}</p>
             <p>{frontmatter.excerpt}</p>
+            <ul>
+              {post.frontmatter.tags.map(tag => {
+                return (
+                  <li key={tag}>
+                    <Link to={`/tags/${tag}`}>{tag}</Link>
+                  </li>
+                )
+              })}
+            </ul>
           </div>
         )
       })}

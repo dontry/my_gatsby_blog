@@ -8,12 +8,14 @@ import React from 'react'
 import Link from 'gatsby-link'
 import Helmet from 'react-helmet'
 
-const Template = ({ data, location }) => {
+const Template = ({ data, location, pathContext }) => {
   const { markdownRemark: post } = data
 
   const { frontmatter, html } = post
 
   const { title, date } = frontmatter
+
+  const  {next, prev} = pathContext
 
   return (
     <div>
@@ -24,6 +26,10 @@ const Template = ({ data, location }) => {
 
         <div dangerouslySetInnerHTML={{ __html: html }} />
       </div>
+	  <p>
+		  {prev && <Link to={prev.frontmatter.path}>Previous: {prev.frontmatter.title}</Link>}
+		  {next && <Link to={next.frontmatter.path}>Next: {next.frontmatter.title}</Link>}
+	  </p>
     </div>
   )
 }
