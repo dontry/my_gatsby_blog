@@ -8,10 +8,13 @@
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-prettier": "^2.6.0",
     "gatsby": "^1.9.247",
+    "gatsby-image": "^1.0.54",
     "gatsby-link": "^1.6.40",
     "gatsby-plugin-react-helmet": "^2.0.10",
+    "gatsby-plugin-styled-components": "^2.0.11",
     "gatsby-source-filesystem": "^1.5.39",
     "gatsby-transformer-remark": "^1.7.44",
+    "gatsby-transformer-sharp": "^1.6.27",
     "react-helmet": "^5.2.0"
   },
   "keywords": [
@@ -26,9 +29,12 @@
     "deploy": "gatsby build --prefix-paths && gh-pages -d public"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-flow": "^6.23.0",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-react": "^7.9.1",
+    "flow-bin": "^0.74.0",
     "gh-pages": "^1.2.0",
     "prettier": "^1.12.0"
   },
