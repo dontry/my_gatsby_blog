@@ -4,6 +4,10 @@
   "version": "1.0.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "babel-eslint": "^8.2.3",
+    "eslint-config-babel": "^7.0.2",
+    "eslint-config-react": "^1.1.7",
+    "eslint-plugin-flowtype": "^2.49.3",
     "eslint-plugin-import": "^2.12.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-prettier": "^2.6.0",
@@ -11,11 +15,13 @@
     "gatsby-image": "^1.0.54",
     "gatsby-link": "^1.6.40",
     "gatsby-plugin-react-helmet": "^2.0.10",
+    "gatsby-plugin-sharp": "^1.6.48",
     "gatsby-plugin-styled-components": "^2.0.11",
     "gatsby-source-filesystem": "^1.5.39",
     "gatsby-transformer-remark": "^1.7.44",
     "gatsby-transformer-sharp": "^1.6.27",
-    "react-helmet": "^5.2.0"
+    "react-helmet": "^5.2.0",
+    "styled-components": "^3.3.2"
   },
   "keywords": [
     "gatsby"
