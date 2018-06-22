@@ -6,5 +6,4 @@ tags: ['holiday', 'fall', 'pumpkin']
 excerpt: "Great Pumpkin, or Greatest Pumpkin?"
 ---
 
-#ARRRROOOOOOOOO
 It was a clear black night, a clear white moon...
