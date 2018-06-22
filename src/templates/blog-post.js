@@ -11,11 +11,17 @@ import MarkdownDoc from '../components/MarkdownDoc'
 import Container from '../components/Container'
 
 const Template = ({ data, location, pathContext }) => {
+  console.log(data);
   const { markdownRemark: post } = data
 
-  const { frontmatter, html } = post
+  const { frontmatter, html, fields } = post
 
-  const { title, ...meta } = frontmatter
+  const { title } = frontmatter
+
+  const meta = {
+    date: fields.date,
+    tags: frontmatter.tags
+  }
 
   const  {next, prev} = pathContext
 
@@ -24,23 +30,26 @@ const Template = ({ data, location, pathContext }) => {
       <Helmet title={`${title} - My blog`} />
       <MarkdownDoc title={title} meta={meta} html={html} />
 	  <p>
-		  {prev && <Link to={prev.frontmatter.path}>Previous: {prev.frontmatter.title}</Link>}
-		  {next && <Link to={next.frontmatter.path}>Next: {next.frontmatter.title}</Link>}
+		  {prev && <Link to={`/${prev.fields.path}`}>Previous</Link>}
+		  {next && <Link to={`/${next.fields.path}`}>Next</Link>}
 	  </p>
     </Container>
   )
 }
 
 export const pageQuery = graphql`
-query BlogPostByPath($path: String!) {
-    markdownRemark(frontmatter: { path: { eq: $path } }) {
+query BlogPostByPath($slug: String!) {
+    markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       frontmatter {
         title
-        date(formatString: "MMMM DD, YYYY")
-        path
         tags
         excerpt
+      }
+      fields {
+        date(formatString: "MMMM DD, YYYY")
+        path
+        slug
       }
     }
   }
