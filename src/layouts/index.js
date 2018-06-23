@@ -4,11 +4,11 @@ import Helmet from 'react-helmet';
 import theme from '../utils/theme';
 import { ThemeProvider } from 'styled-components';
 
-import Header from '../components/header';
+import NavBar from '../components/NavBar'
 import './normalize.css';
 import './index.css';
 
-const Layout = ({ children, data }) => (
+const Layout = ({ children, data, location }) => (
   <ThemeProvider theme={theme}>
     <div>
       <Helmet
@@ -18,7 +18,8 @@ const Layout = ({ children, data }) => (
           { name: 'keywords', content: 'sample, something' },
         ]}
       />
-      <Header siteTitle={data.site.siteMetadata.title} />
+      {/* <Header siteTitle={data.site.siteMetadata.title} /> */}
+      <NavBar location={location} />
       <div
         style={{
           margin: '0 auto',
