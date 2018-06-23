@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'gatsby-link';
-import Container from '../components/Container'
+import Container from '../components/Container';
+import Tag from '../components/Tag'
 
 const IndexPage = ({ data }) => {
   const { edges: posts } = data.allMarkdownRemark;
@@ -9,7 +10,7 @@ const IndexPage = ({ data }) => {
   return (
     <Container>
       {posts.map(({ node: post }) => {
-        const { frontmatter, fields} = post;
+        const { frontmatter, fields } = post;
         return (
           <div key={frontmatter.title}>
             <h2>
@@ -22,7 +23,9 @@ const IndexPage = ({ data }) => {
                 frontmatter.tags.map(tag => {
                   return (
                     <li key={tag}>
-                      <Link to={`/tags/${tag}`}>{tag}</Link>
+                      <Tag>
+                        <Link to={`/tags/${tag}`}>{tag}</Link>
+                      </Tag>
                     </li>
                   );
                 })}
@@ -37,9 +40,7 @@ const IndexPage = ({ data }) => {
 //Each edge is the file system path to the node, which is our post.
 export const query = graphql`
   query IndexQuery {
-    allMarkdownRemark(
-      sort: {fields: [fields___date], order: DESC}
-    ) {
+    allMarkdownRemark(sort: { fields: [fields___date], order: DESC }) {
       totalCount
       edges {
         node {
