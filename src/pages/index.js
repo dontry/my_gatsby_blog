@@ -1,7 +1,5 @@
 import React from 'react';
-import Link from 'gatsby-link';
 import Container from '../components/Container';
-import Tag from '../components/Tag';
 import MarkdownExcerpt from '../components/MarkdownExcerpt';
 
 const IndexPage = ({ data }) => {
@@ -9,11 +7,9 @@ const IndexPage = ({ data }) => {
   console.log(posts[0]);
 
   return (
-    <Container>
-      {posts.map(({ node: post }) => (
-        <MarkdownExcerpt post={post} />
-      ))}
-    </Container>
+      <div>
+        {posts.map(({ node: post }) => <MarkdownExcerpt key={post.frontmatter.title} post={post} />)}
+      </div>
   );
 };
 

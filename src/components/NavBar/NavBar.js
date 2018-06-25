@@ -47,8 +47,12 @@ const NavBar = ({ location }) => {
     <Header>
       <Container>
         <StyledFlex>
-          <NavLogo />
           <NavWrapper>
+            <NavLink
+              isActive={location.pathname === "/"}
+              title="Home"
+              to="/"
+            />
             <NavLink
               isActive={location.pathname.includes('/tags/')}
               title="Archives"

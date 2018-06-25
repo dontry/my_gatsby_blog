@@ -73,7 +73,7 @@ const MarkdownExcerpt = ({ post }) => {
           {frontmatter.tags &&
             frontmatter.tags.map(tag => {
               return (
-                <SmallTag>
+                <SmallTag key={tag}>
                   <Link to={`/tags/${tag}`}>{tag}</Link>
                 </SmallTag>
               );

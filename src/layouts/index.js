@@ -3,11 +3,14 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import theme from '../utils/theme';
 import { ThemeProvider } from 'styled-components';
-import {media} from '../utils/theme'
+import { media } from '../utils/theme';
 
+import Flex from '../components/Flex';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import Container from '../components/Container';
+import Sidebar from '../components/Sidebar';
+import Profile from '../components/Profile';
 import './normalize.css';
 import './index.css';
 
@@ -34,7 +37,14 @@ const Layout = ({ children, data, location }) => (
       {/* <Header siteTitle={data.site.siteMetadata.title} /> */}
       <div style={{ minHeight: 'calc(100vh - 60px)' }}>
         <NavBar location={location} />
-        <StyledContainer>{children()}</StyledContainer>
+        <Flex style={{ flexDirection: 'row' }}>
+          {location.pathname === '/' && (
+            <Sidebar>
+              <Profile />
+            </Sidebar>
+          )}
+          <StyledContainer>{children()}</StyledContainer>
+        </Flex>
       </div>
       <Footer />
     </div>
