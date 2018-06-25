@@ -1,7 +1,8 @@
 import React from 'react';
 import Link from 'gatsby-link';
 import Container from '../components/Container';
-import Tag from '../components/Tag'
+import Tag from '../components/Tag';
+import MarkdownExcerpt from '../components/MarkdownExcerpt';
 
 const IndexPage = ({ data }) => {
   const { edges: posts } = data.allMarkdownRemark;
@@ -9,30 +10,9 @@ const IndexPage = ({ data }) => {
 
   return (
     <Container>
-      {posts.map(({ node: post }) => {
-        const { frontmatter, fields } = post;
-        return (
-          <div key={frontmatter.title}>
-            <h2>
-              <Link to={fields.path}>{frontmatter.title}</Link>
-            </h2>
-            <p>{fields.date}</p>
-            <p>{frontmatter.excerpt}</p>
-            <ul>
-              {frontmatter.tags &&
-                frontmatter.tags.map(tag => {
-                  return (
-                    <li key={tag}>
-                      <Tag>
-                        <Link to={`/tags/${tag}`}>{tag}</Link>
-                      </Tag>
-                    </li>
-                  );
-                })}
-            </ul>
-          </div>
-        );
-      })}
+      {posts.map(({ node: post }) => (
+        <MarkdownExcerpt post={post} />
+      ))}
     </Container>
   );
 };
@@ -45,6 +25,8 @@ export const query = graphql`
       edges {
         node {
           id
+          html
+          excerpt(pruneLength: 280)
           frontmatter {
             title
             tags
