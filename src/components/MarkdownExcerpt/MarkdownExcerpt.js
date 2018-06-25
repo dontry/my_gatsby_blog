@@ -15,16 +15,21 @@ const Wrapper = styled.article`
 const Title = styled.h2`
   font-weight: 500;
   margin-bottom: 0.5rem;
-  color: #000;
+  & a {
+    color: #3a3a3a;
+  }
+  & a:hover {
+    text-decoration: underline;
+  }
 `;
 
 const Meta = styled.h5`
-  font-weight: 300;
   margin-bottom: 0.5rem;
-  color: ${props => darken(0.3, props.theme.colors.light)};
 `;
 
 const Time = styled.time`
+  font-weight: 300;
+  color: ${props => darken(0.3, props.theme.colors.light)};
   display: inline-block;
   margin-right: 1.25rem;
   margin-bottom: 0.5rem;
@@ -32,22 +37,6 @@ const Time = styled.time`
 
 const TagWrapper = styled.div`
   display: inline-flex;
-`;
-
-const SmallTag = Tag.extend`
-  margin-left: 10px;
-  margin-right: 10px;
-  &::before {
-    border: 10px solid #fff;
-    border-right-color: transparent;
-    left: -20px;
-  }
-  &::after {
-    width: 5px;
-    height: 5px;
-    top: 7px;
-    left: -3px;
-  }
 `;
 
 const Content = styled.div`
@@ -71,13 +60,7 @@ const MarkdownExcerpt = ({ post }) => {
         </Time>
         <TagWrapper>
           {frontmatter.tags &&
-            frontmatter.tags.map(tag => {
-              return (
-                <SmallTag key={tag}>
-                  <Link to={`/tags/${tag}`}>{tag}</Link>
-                </SmallTag>
-              );
-            })}
+            frontmatter.tags.map(tag => <Tag key={tag} tag={tag} />)}
         </TagWrapper>
       </Meta>
       {frontmatter.excerpt ? (

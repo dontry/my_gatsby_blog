@@ -18,12 +18,18 @@ module.exports = (createPage, posts) => {
   });
 
   const tags = Object.keys(postsByTags);
+  const numOfpostsByTags = {};
+
+  tags.forEach(tag => {
+    numOfpostsByTags[tag] = postsByTags[tag].length
+  })
 
   createPage({
     path: `/tags`,
     component: allTagsTemplate,
     context: {
       tags: tags.sort(),
+      nums: numOfpostsByTags
     },
   });
 

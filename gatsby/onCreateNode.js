@@ -57,7 +57,7 @@ module.exports = exports.onCreateNode = ({
       createNodeField({
         node,
         name: 'path',
-        value: relativePath,
+        value: `/${relativePath.replace('.md','.html')}`,
       });
 
       return;

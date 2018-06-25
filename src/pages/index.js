@@ -4,8 +4,6 @@ import MarkdownExcerpt from '../components/MarkdownExcerpt';
 
 const IndexPage = ({ data }) => {
   const { edges: posts } = data.allMarkdownRemark;
-  console.log(posts[0]);
-
   return (
       <div>
         {posts.map(({ node: post }) => <MarkdownExcerpt key={post.frontmatter.title} post={post} />)}

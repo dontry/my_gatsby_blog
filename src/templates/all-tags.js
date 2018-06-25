@@ -1,26 +1,29 @@
 import React from 'react';
-import Link from 'gatsby-link'
+import styled from 'styled-components';
+import Flex from '../components/Flex';
+import Sidebar from '../components/Sidebar';
+import Tag from '../components/Tag';
 
-const AllTags = ({pathContext}) => {
-    const { tags } = pathContext
+const TagsWrapper = Flex.extend`
+  flex-direction: column;
+`;
 
-    if(tags) {
-        return (
-            <div>
-                <ul>
-                    {tags.map(tag => {
-                        return (
-                            <li key={tag}>
-                                <Link to={`/tags/${tag}`}>
-                                {tag}
-                                </Link>
-                            </li>
-                        )
-                    })}
-                </ul>
-            </div> 
-        )
-    }
-}
+const AllTags = ({ pathContext }) => {
+  const { tags, nums } = pathContext;
 
-export default AllTags
+  if (tags) {
+    return (
+      <Flex>
+        <Sidebar>
+          <TagsWrapper>
+            {tags.map(tag => {
+              return <Tag key={tag} tag={`${tag} (${nums[tag]})`} />;
+            })}
+          </TagsWrapper>
+        </Sidebar>
+      </Flex>
+    );
+  }
+};
+
+export default AllTags;

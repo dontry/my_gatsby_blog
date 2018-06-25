@@ -24,14 +24,16 @@ const StyledContainer = Container.extend`
     `};
 `;
 
-const Layout = ({ children, data, location }) => (
+const Layout = ({ children, data, location }) => {
+  console.log(location)
+  return(
   <ThemeProvider theme={theme}>
     <div>
       <Helmet
         title={data.site.siteMetadata.title}
         meta={[
-          { name: 'description', content: 'Sample' },
-          { name: 'keywords', content: 'sample, something' },
+          { name: 'description', content: 'Dontry blog' },
+          { name: 'keywords', content: 'javascript, react, front-end' },
         ]}
       />
       {/* <Header siteTitle={data.site.siteMetadata.title} /> */}
@@ -49,11 +51,7 @@ const Layout = ({ children, data, location }) => (
       <Footer />
     </div>
   </ThemeProvider>
-);
-
-Layout.propTypes = {
-  children: PropTypes.func,
-};
+);}
 
 export default Layout;
 
