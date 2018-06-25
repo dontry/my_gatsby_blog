@@ -8,6 +8,7 @@ import NavLink from './NavLink';
 
 const Header = styled.header`
   /* background-color: ${props => props.theme.colors.light}; */
+  background-color: #fff;
   color: ${props => props.theme.colors.darkGrey};
   position: sticky;
   z-index: 10;

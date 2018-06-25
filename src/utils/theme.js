@@ -20,6 +20,7 @@ const theme = {
     sidebarFixed: { min: '2000px', max: Infinity },
   },
   fontSizes: {
+    xsmall: '10px',
     small: '14px',
     medium: '18px',
     large: '24px',
