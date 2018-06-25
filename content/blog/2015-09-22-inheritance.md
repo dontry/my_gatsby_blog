@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Inheritance <small>JS the good parts</small>
+title: Inheritance (JS the good parts)
 ---
 
 Inheritance is a big topic in JavaScript. Unlike Java or C++ which are object-oriented languages and they can inherit other classes, JavaScript is a prototypal by nature. So the inheritance pattern in JavaScript is far more complicated for me. I still couldn't totally understand how inheritance pattern work after I finished this section.

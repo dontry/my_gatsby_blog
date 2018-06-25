@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Augmenting types <small>JS the good parts</small>
+title: Augmenting types (JS the good parts)
 tags:
  - JS
 ---
