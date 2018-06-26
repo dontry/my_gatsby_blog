@@ -1,7 +1,7 @@
 module.exports = {
-  pathPrefix: `/my-gatsby-blog`,
+  pathPrefix: `/dontry.github.io`,
   siteMetadata: {
-    title: 'Gatsby Default Starter',
+    title: 'Dong Cai Webdev',
   },
   plugins: [
     'gatsby-plugin-react-helmet',

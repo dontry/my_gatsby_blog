@@ -59,14 +59,14 @@ const NavBar = ({ location }) => {
               to="/archive/"
             />
             <NavLink
-              isActive={location.pathname.includes('/profile/')}
-              title="Profile"
-              to="/profile/"
+              isActive={location.pathname.includes('/portfolios')}
+              title="Portfolios"
+              to="/portfolios.html"
             />
             <NavLink
-              isActive={location.pathname.includes('/portfolio/')}
-              title="Portfolio"
-              to="/portfolio/"
+              isActive={location.pathname.includes('/my_cv')}
+              title="Profile"
+              to="my_cv"
             />
           </NavWrapper>
         </StyledFlex>

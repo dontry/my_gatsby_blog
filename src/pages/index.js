@@ -6,12 +6,6 @@ import Profile from '../components/Profile';
 import { media } from '../utils/theme';
 import styled from 'styled-components';
 
-const CustomSidebar = styled(Sidebar)`
-  ${media.lessThan('small')`
-        display: none;
-    `};
-`;
-
 const IndexPage = ({ data }) => {
   const { edges: posts } = data.allMarkdownRemark;
   return (

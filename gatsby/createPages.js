@@ -7,6 +7,10 @@ module.exports = async ({ boundActionCreators, graphql }) => {
     __dirname,
     '../src/templates/blog-post.js'
   );
+  const portfoliosTemplate = path.resolve(
+    __dirname,
+    '../src/templates/portfolios.js'
+  );
 
   const res = await graphql(`
     {
@@ -54,5 +58,10 @@ module.exports = async ({ boundActionCreators, graphql }) => {
         },
       });
     }
+  });
+
+  createPage({
+    path: '/portfolios.html',
+    component: portfoliosTemplate,
   });
 };

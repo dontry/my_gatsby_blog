@@ -16,7 +16,7 @@ const TagTitle = styled.h4`
   margin-bottom: 1rem;
 `
 
-const TagsWrapper = Flex.extend`
+const ListWrapper = Flex.extend`
   flex-direction: column;
   margin-bottom: 30px;
   ${media.lessThan('small')`
@@ -30,13 +30,13 @@ const TagsWrapper = Flex.extend`
 const ArchiveSidebar = ({ tags = [], nums = {}, years = [] }) => (
   <CustomSidebar>
     <TagTitle>Years</TagTitle>
-    <TagsWrapper>
+    <ListWrapper>
       {years.map(year => (
         <Tag key={year} tag={year} to={`/archive/years/${year}`} />
       ))}
-    </TagsWrapper>
+    </ListWrapper>
     <TagTitle>Tags</TagTitle>
-    <TagsWrapper>
+    <ListWrapper>
       {tags.map(tag => (
         <Tag
           key={tag}
@@ -44,7 +44,7 @@ const ArchiveSidebar = ({ tags = [], nums = {}, years = [] }) => (
           to={`/archive/tags/${tag}`}
         />
       ))}
-    </TagsWrapper>
+    </ListWrapper>
   </CustomSidebar>
 );
 
