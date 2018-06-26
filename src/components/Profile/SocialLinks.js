@@ -5,7 +5,7 @@ import Flex from '../Flex';
 import SocialIcon from './SocialIcon'
 
 const Wrapper = Flex.extend`
-  justify-content: space-between;
+  justify-content: center;
 `;
 
 const SocialLinks = () => (

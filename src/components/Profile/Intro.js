@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import SocialLinks from './SocialLinks';
 
 const Wrapper = styled.div`
   text-align: center;
@@ -18,6 +19,7 @@ const Intro = () => (
   <Wrapper>
     <Name>Dong Cai</Name>
     <Title>Web Developer</Title>
+    <SocialLinks/> 
   </Wrapper>
 );
 
