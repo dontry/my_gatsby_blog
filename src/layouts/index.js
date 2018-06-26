@@ -10,6 +10,7 @@ import Footer from '../components/Footer';
 import Container from '../components/Container';
 import './normalize.css';
 import './index.css';
+import FavIcon from '../images/favicon.ico'
 
 
 
@@ -33,6 +34,7 @@ const Layout = ({ children, data, location }) => {
             { name: 'description', content: 'Dontry blog' },
             { name: 'keywords', content: 'javascript, react, front-end' },
           ]}
+          link={[{rel: 'icon', href: FavIcon}]}
         />
         {/* <Header siteTitle={data.site.siteMetadata.title} /> */}
         <div style={{ minHeight: 'calc(100vh - 60px)' }}>
