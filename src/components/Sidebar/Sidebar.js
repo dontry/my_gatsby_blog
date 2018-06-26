@@ -1,13 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import { media } from '../../utils/theme';
 
 const Wrapper = styled.aside`
+  position: relative;
   height: 100%;
-  width: 300px;
-  ${media.lessThan('small')`
-        display: none;
-    `};
+  width: 200px;
 `;
 
 const Sidebar = ({ children }) => {

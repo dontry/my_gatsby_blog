@@ -11,7 +11,6 @@ import MarkdownDoc from '../components/MarkdownDoc'
 import Container from '../components/Container'
 
 const Template = ({ data, location, pathContext }) => {
-  console.log(data);
   const { markdownRemark: post } = data
 
   const { frontmatter, html, fields } = post

@@ -8,15 +8,9 @@ import SocialLinks from './SocialLinks';
 const Wrapper = Flex.extend`
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  padding-left: 10px;
   min-width: 200px;
-  padding-top: 40px;
-  ${media.size('medium')`
-        padding-top: 60px;
-    `};
-  ${media.greaterThan('large')`
-        padding-top: 80px;
-    `};
 `;
 
 const Profile = () => (

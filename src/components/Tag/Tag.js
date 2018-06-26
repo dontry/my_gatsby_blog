@@ -13,6 +13,7 @@ const Wrapper = styled.span`
   padding-right: 15px;
   border-bottom-right-radius: 2px;
   border-top-right-radius: 2px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: ${props => props.theme.fontSizes.small};
   line-height: 1.1;
   min-width: 50px;
@@ -20,6 +21,7 @@ const Wrapper = styled.span`
   margin-left: 10px;
   margin-right: 10px;
   margin-bottom: 10px;
+  white-space: nowrap;
   &::before {
     content: '';
     position: absolute;
@@ -51,9 +53,9 @@ const Wrapper = styled.span`
   }
 `;
 
-const Tag = ({ tag }) => (
+const Tag = ({ tag, to }) => (
   <Wrapper>
-    <Link to={`/tags/${tag}`}>{tag}</Link>
+    <Link to={to || `/archive/tags/${tag}`}>{tag}</Link>
   </Wrapper>
 );
 

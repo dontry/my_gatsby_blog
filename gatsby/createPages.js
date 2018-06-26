@@ -1,5 +1,5 @@
 const path = require('path');
-const createTagPages = require('./createTagPages');
+const createArchivePages = require('./createArchivePages');
 
 module.exports = async ({ boundActionCreators, graphql }) => {
   const { createPage } = boundActionCreators;
@@ -10,11 +10,12 @@ module.exports = async ({ boundActionCreators, graphql }) => {
 
   const res = await graphql(`
     {
-      allMarkdownRemark(limit: 1000) {
+      allMarkdownRemark(limit: 100) {
         edges {
           node {
             html
             id
+            excerpt(pruneLength: 280)
             frontmatter {
               title
               excerpt
@@ -22,7 +23,7 @@ module.exports = async ({ boundActionCreators, graphql }) => {
             }
             fields {
               slug
-              date
+              date(formatString: "MMMM DD, YYYY")
               path
             }
           }
@@ -37,7 +38,7 @@ module.exports = async ({ boundActionCreators, graphql }) => {
 
   const posts = res.data.allMarkdownRemark.edges;
 
-  createTagPages(createPage, posts);
+  createArchivePages(createPage, posts);
 
   posts.forEach(({ node }, index) => {
     const slug = node.fields.slug;

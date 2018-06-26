@@ -21,8 +21,6 @@ const TagWrapper = styled.div`
 
 const Meta = ({ meta }) => {
   const { date, tags } = meta;
-  console.log(date);
-  console.log(tags);
   return (
     <Wrapper>
       <Time dateTime={new Date(date).toLocaleDateString()}>{date}</Time>

@@ -4,12 +4,6 @@ import styled from 'styled-components';
 import { lighten, darken } from 'polished';
 import Link from 'gatsby-link';
 
-type Props = {
-  isActive: boolean,
-  title: string,
-  to: string,
-};
-
 const StyledLink = styled(Link)`
     display: flex;
     flex-direction: row;
@@ -47,7 +41,7 @@ const StyledLink = styled(Link)`
     }
 `;
 
-const NavLink = ({ isActive, title, to }: Props) => (
+const NavLink = ({ isActive, title, to }) => (
   <StyledLink to={to} activeStyle={isActive}>
     {title}
   </StyledLink>

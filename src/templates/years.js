@@ -4,15 +4,16 @@ import Flex from '../components/Flex';
 import ArchiveSidebar from './components/ArchiveSidebar';
 import MarkdownExcerpt from '../components/MarkdownExcerpt';
 
-const Tags = ({ pathContext }) => {
-  const { tags, nums, posts, years, tag } = pathContext;
+const Years = ({ pathContext }) => {
+  const { tags, nums, posts, years, year } = pathContext;
+
   return (
     <Flex>
       <ArchiveSidebar tags={tags} nums={nums} years={years} />
       <Container>
         {
           <div style={{ marginBottom: 50 }}>
-            <h1 style={{ marginBottom: 10 }}>{tag}</h1>
+            <h1 style={{ marginBottom: 10 }}>{year}</h1>
             {posts.map(post => (
               <MarkdownExcerpt key={post.frontmatter.title} post={post} />
             ))}
@@ -23,4 +24,4 @@ const Tags = ({ pathContext }) => {
   );
 };
 
-export default Tags;
+export default Years;

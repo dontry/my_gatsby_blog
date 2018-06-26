@@ -5,14 +5,13 @@ import theme from '../utils/theme';
 import { ThemeProvider } from 'styled-components';
 import { media } from '../utils/theme';
 
-import Flex from '../components/Flex';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import Container from '../components/Container';
-import Sidebar from '../components/Sidebar';
-import Profile from '../components/Profile';
 import './normalize.css';
 import './index.css';
+
+
 
 const StyledContainer = Container.extend`
   padding-top: 40px;
@@ -25,33 +24,26 @@ const StyledContainer = Container.extend`
 `;
 
 const Layout = ({ children, data, location }) => {
-  console.log(location)
-  return(
-  <ThemeProvider theme={theme}>
-    <div>
-      <Helmet
-        title={data.site.siteMetadata.title}
-        meta={[
-          { name: 'description', content: 'Dontry blog' },
-          { name: 'keywords', content: 'javascript, react, front-end' },
-        ]}
-      />
-      {/* <Header siteTitle={data.site.siteMetadata.title} /> */}
-      <div style={{ minHeight: 'calc(100vh - 60px)' }}>
-        <NavBar location={location} />
-        <Flex style={{ flexDirection: 'row' }}>
-          {location.pathname === '/' && (
-            <Sidebar>
-              <Profile />
-            </Sidebar>
-          )}
+  return (
+    <ThemeProvider theme={theme}>
+      <div>
+        <Helmet
+          title={data.site.siteMetadata.title}
+          meta={[
+            { name: 'description', content: 'Dontry blog' },
+            { name: 'keywords', content: 'javascript, react, front-end' },
+          ]}
+        />
+        {/* <Header siteTitle={data.site.siteMetadata.title} /> */}
+        <div style={{ minHeight: 'calc(100vh - 60px)' }}>
+          <NavBar location={location} />
           <StyledContainer>{children()}</StyledContainer>
-        </Flex>
+        </div>
+        <Footer />
       </div>
-      <Footer />
-    </div>
-  </ThemeProvider>
-);}
+    </ThemeProvider>
+  );
+};
 
 export default Layout;
 

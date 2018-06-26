@@ -1,13 +1,30 @@
 import React from 'react';
-import Container from '../components/Container';
 import MarkdownExcerpt from '../components/MarkdownExcerpt';
+import Flex from '../components/Flex';
+import Sidebar from '../components/Sidebar';
+import Profile from '../components/Profile';
+import { media } from '../utils/theme';
+import styled from 'styled-components';
+
+const CustomSidebar = styled(Sidebar)`
+  ${media.lessThan('small')`
+        display: none;
+    `};
+`;
 
 const IndexPage = ({ data }) => {
   const { edges: posts } = data.allMarkdownRemark;
   return (
+    <Flex style={{ flexDirection: 'row' }}>
+      <Sidebar>
+        <Profile />
+      </Sidebar>
       <div>
-        {posts.map(({ node: post }) => <MarkdownExcerpt key={post.frontmatter.title} post={post} />)}
+        {posts.map(({ node: post }) => (
+          <MarkdownExcerpt key={post.frontmatter.title} post={post} />
+        ))}
       </div>
+    </Flex>
   );
 };
 

@@ -55,8 +55,8 @@ const NavBar = ({ location }) => {
             />
             <NavLink
               isActive={location.pathname.includes('/tags/')}
-              title="Archives"
-              to="/tags/"
+              title="Archive"
+              to="/archive/"
             />
             <NavLink
               isActive={location.pathname.includes('/profile/')}

@@ -12,7 +12,6 @@ module.exports = exports.onCreateNode = ({
 }) => {
   const { createNodeField } = boundActionCreators;
 
-
   switch (node.internal.type) {
     case 'MarkdownRemark':
       const { permalink, redirect_from } = node.frontmatter;
@@ -32,6 +31,7 @@ module.exports = exports.onCreateNode = ({
           slug = `/blog/${year}/${month}/${day}/${filename}.html`;
 
           const date = new Date(year, month - 1, day);
+
           createNodeField({
             node,
             name: 'date',
@@ -57,7 +57,7 @@ module.exports = exports.onCreateNode = ({
       createNodeField({
         node,
         name: 'path',
-        value: `/${relativePath.replace('.md','.html')}`,
+        value: `/${relativePath.replace('.md', '.html')}`,
       });
 
       return;

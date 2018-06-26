@@ -8,7 +8,7 @@ import { darken } from 'polished';
 const Wrapper = styled.article`
   padding-bottom: 40px;
   ${media.lessThan('small')`
-        padding-top: 25px;
+        padding-bottom: 25px;
     `};
 `;
 
