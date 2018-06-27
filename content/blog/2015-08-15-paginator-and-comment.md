@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Paginator and Comment Modal	
 tags: 
  - MODAL
