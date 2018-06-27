@@ -6,13 +6,16 @@ import Profile from '../components/Profile';
 import { media } from '../utils/theme';
 import styled from 'styled-components';
 
+const CustomSidebar = styled(Sidebar)`
+`;
+
 const IndexPage = ({ data }) => {
   const { edges: posts } = data.allMarkdownRemark;
   return (
     <Flex style={{ flexDirection: 'row' }}>
-      <Sidebar>
+      <CustomSidebar>
         <Profile />
-      </Sidebar>
+      </CustomSidebar>
       <div>
         {posts.map(({ node: post }) => (
           <MarkdownExcerpt key={post.frontmatter.title} post={post} />

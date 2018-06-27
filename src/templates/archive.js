@@ -9,7 +9,7 @@ const Archive = ({ pathContext }) => {
   return (
     <Flex>
       <ArchiveSidebar tags={tags} nums={nums} years={years} />
-      <Container>
+      <section>
         {years.map(year => {
           return (
             <div style={{ marginBottom: 50 }}>
@@ -25,7 +25,7 @@ const Archive = ({ pathContext }) => {
             </div>
           );
         })}
-      </Container>
+      </section>
     </Flex>
   );
 };

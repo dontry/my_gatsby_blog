@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Link from 'gatsby-link';
 import { media } from '../../utils/theme';
-import Tag from '../Tag';
+import { SmallTag } from '../Tag';
 import { darken } from 'polished';
 
 const Wrapper = styled.article`
@@ -45,6 +45,9 @@ const Content = styled.div`
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   padding: 0;
+  ${media.lessThan('small')`
+    width: 280px;
+  `};
 `;
 
 const MarkdownExcerpt = ({ post }) => {
@@ -60,7 +63,7 @@ const MarkdownExcerpt = ({ post }) => {
         </Time>
         <TagWrapper>
           {frontmatter.tags &&
-            frontmatter.tags.map(tag => <Tag key={tag} tag={tag} />)}
+            frontmatter.tags.map(tag => <SmallTag key={tag} tag={tag} />)}
         </TagWrapper>
       </Meta>
       {frontmatter.excerpt ? (

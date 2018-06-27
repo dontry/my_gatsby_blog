@@ -53,10 +53,29 @@ const Wrapper = styled.span`
   }
 `;
 
+const SmallWrapper = Wrapper.extend`
+  font-size: ${props => props.theme.fontSizes.xsmall};
+  margin-bottom: 0;
+  &::before {
+    border: 10px solid #fff;
+    border-right-color: transparent;
+  }
+  &::after {
+    top: 7px;
+  }
+`
+
 const Tag = ({ tag, to }) => (
   <Wrapper>
     <Link to={to || `/archive/tags/${tag}`}>{tag}</Link>
   </Wrapper>
 );
+
+export const SmallTag = ({tag, to}) => (
+  <SmallWrapper>
+    <Link to={to || `/archive/tags/${tag}`}>{tag}</Link>
+  </SmallWrapper>
+
+)
 
 export default Tag;
