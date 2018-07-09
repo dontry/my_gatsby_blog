@@ -1,6 +1,7 @@
 ---
 title: React - Basic Theoretical Concepts
-tag: ['REACT']
+tags: 
+  - REACT
 ---
 
 This document is my attempt to formally explain my mental model of React. The intention is to describe this in terms of deductive reasoning that lead us to this design.

@@ -54,14 +54,14 @@ const NavBar = ({ location }) => {
               to="/"
             />
             <NavLink
-              isActive={location.pathname.includes('/tags/')}
+              isActive={location.pathname.includes('/archive')}
               title="Archive"
-              to="/archive/"
+              to="archive"
             />
             <NavLink
               isActive={location.pathname.includes('/portfolios')}
               title="Portfolios"
-              to="/portfolios.html"
+              to="portfolios"
             />
             <NavLink
               isActive={location.pathname.includes('/my_cv')}

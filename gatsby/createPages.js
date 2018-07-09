@@ -61,7 +61,7 @@ module.exports = async ({ boundActionCreators, graphql }) => {
   });
 
   createPage({
-    path: '/portfolios.html',
+    path: '/portfolios',
     component: portfoliosTemplate,
   });
 };
