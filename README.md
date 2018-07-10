@@ -21,6 +21,7 @@ cd gatsby-example-site
 gatsby develop
 ```
 
-## Deploy
-
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-default)
+Deploy on Github pages
+```sh
+gatsby build && gh-pages -d public -b master
+```
