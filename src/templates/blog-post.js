@@ -7,12 +7,14 @@
 import React from 'react';
 import Link from 'gatsby-link';
 import Helmet from 'react-helmet';
+import styled from 'styled-components';
 import MarkdownDoc from '../components/MarkdownDoc';
 import Container from '../components/Container';
 import Button from '../components/Button';
 import Flex from '../components/Flex';
+import Layout from '../components/layout';
 
-const ButtonGroup = Flex.extend`
+const ButtonGroup = styled(Flex)`
   justify-content: center;
   & button {
     margin-right: 20px;
@@ -34,22 +36,24 @@ const Template = ({ data, location, pathContext }) => {
   const { next, prev } = pathContext;
 
   return (
-    <Container>
-      <Helmet title={`${title} - My blog`} />
-      <MarkdownDoc title={title} meta={meta} html={html} />
-      <ButtonGroup>
-        {prev && (
-          <Link to={prev.fields.path}>
-            <Button>Previous</Button>
-          </Link>
-        )}
-        {next && (
-          <Link to={next.fields.path}>
-            <Button>Next</Button>
-          </Link>
-        )}
-      </ButtonGroup>
-    </Container>
+    <Layout>
+      <Container>
+        <Helmet title={`${title} - My blog`} />
+        <MarkdownDoc title={title} meta={meta} html={html} />
+        <ButtonGroup>
+          {prev && (
+            <Link to={prev.fields.path}>
+              <Button>Previous</Button>
+            </Link>
+          )}
+          {next && (
+            <Link to={next.fields.path}>
+              <Button>Next</Button>
+            </Link>
+          )}
+        </ButtonGroup>
+      </Container>
+    </Layout>
   );
 };
 

@@ -1,22 +1,20 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
-import theme from '../utils/theme';
-import { ThemeProvider } from 'styled-components';
-import { media } from '../utils/theme';
+import styled, { ThemeProvider } from 'styled-components';
+import theme, { media } from '../utils/theme';
+// import {StaticQuery, graphql} from 'gatsby'
 
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import Container from '../components/Container';
-import './normalize.css';
-import './index.css';
-import FavIcon from '../images/favicon.ico'
+import '../layouts/normalize.css';
+import '../layouts/index.css';
+import FavIcon from '../images/favicon.ico';
 
-
-
-const StyledContainer = Container.extend`
+const StyledContainer = styled(Container)`
   padding-top: 40px;
-  padding-bottom: 20px;
+  padding-bottom: 40px;
   ${media.size('medium')`
         padding-top: 60px;
     `} ${media.greaterThan('large')`
@@ -24,37 +22,27 @@ const StyledContainer = Container.extend`
     `};
 `;
 
-const Layout = ({ children, data, location }) => {
+const Layout = ({ children }) => {
   return (
     <ThemeProvider theme={theme}>
-      <div>
+      <Fragment>
         <Helmet
-          title={data.site.siteMetadata.title}
+          // title={data.site.siteMetadata.title}
           meta={[
             { name: 'description', content: 'Dontry blog' },
             { name: 'keywords', content: 'javascript, react, front-end' },
           ]}
-          link={[{rel: 'icon', href: FavIcon}]}
+          link={[{ rel: 'icon', href: FavIcon }]}
         />
         {/* <Header siteTitle={data.site.siteMetadata.title} /> */}
         <div style={{ minHeight: 'calc(100vh - 60px)' }}>
           <NavBar location={location} />
-          <StyledContainer>{children()}</StyledContainer>
+          <StyledContainer>{children}</StyledContainer>
         </div>
         <Footer />
-      </div>
+      </Fragment>
     </ThemeProvider>
   );
 };
 
 export default Layout;
-
-export const query = graphql`
-  query SiteTitleQuery {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-  }
-`;

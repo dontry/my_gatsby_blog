@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Flex from '../Flex';
 
-const Wrapper = Flex.extend`
+const Wrapper = styled(Flex)`
   position: relative;
   bottom: 0px;
   background-color: ${props => props.theme.colors.light};

@@ -14,9 +14,9 @@ const CustomSidebar = styled(Sidebar)`
 const TagTitle = styled.h4`
   margin-left: 1rem;
   margin-bottom: 1rem;
-`
+`;
 
-const ListWrapper = Flex.extend`
+const ListWrapper = styled(Flex)`
   flex-direction: column;
   margin-bottom: 30px;
   ${media.lessThan('small')`

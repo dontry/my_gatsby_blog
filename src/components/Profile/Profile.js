@@ -1,11 +1,12 @@
 import React, { Fragment } from 'react';
+import styled from 'styled-components';
 import { media } from '../../utils/theme';
 import Flex from '../Flex';
 import Avatar from './Avatar';
 import Intro from './Intro';
 import SocialLinks from './SocialLinks';
 
-const Wrapper = Flex.extend`
+const Wrapper = styled(Flex)`
   flex-direction: column;
   justify-content: center;
   align-items: center;

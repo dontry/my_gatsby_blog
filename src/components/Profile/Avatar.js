@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Logo from '../../images/logo.jpg';
 import Flex from '../Flex';
 
-const Wrapper = Flex.extend`
+const Wrapper = styled(Flex)`
   align-items: center;
   justify-content: center;
   width: 120px;

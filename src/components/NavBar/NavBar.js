@@ -18,28 +18,27 @@ const Header = styled.header`
   right: 0;
 `;
 
-const StyledFlex = Flex.extend`
+const StyledFlex = styled(Flex)`
   align-items: center;
   height: 60px;
   ${media.between('small', 'large')`height: 50px;`};
   ${media.lessThan('small')`height: 40px;`};
 `;
 
-const NavWrapper = Flex.withComponent('nav').extend`
-    align-items: stretch;
-    justify-self: center;
-    overflow-x: auto;
-    overflow-y: hidden;
-    -webkit-overflow-scrolling: touch;
-    height: 100%;
-    width: 60%;
-    ${media.size('xsmall')`
+const NavWrapper = styled(Flex.withComponent('nav'))`
+  align-items: stretch;
+  justify-self: center;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  height: 100%;
+  width: 60%;
+  ${media.size('xsmall')`
         flex-grow: 1;
         width: auto;
-    `}
-    ${media.greaterThan('xlarge')`
+    `} ${media.greaterThan('xlarge')`
         width: null;
-    `}
+    `};
 `;
 
 const NavBar = ({ location }) => {
@@ -48,11 +47,7 @@ const NavBar = ({ location }) => {
       <Container>
         <StyledFlex>
           <NavWrapper>
-            <NavLink
-              isActive={location.pathname === "/"}
-              title="Home"
-              to="/"
-            />
+            <NavLink isActive={location.pathname === '/'} title="Home" to="/" />
             <NavLink
               isActive={location.pathname.includes('/archive')}
               title="Archive"

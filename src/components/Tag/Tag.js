@@ -13,7 +13,8 @@ const Wrapper = styled.span`
   padding-right: 15px;
   border-bottom-right-radius: 2px;
   border-top-right-radius: 2px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: ${props => props.theme.fontSizes.small};
   line-height: 1.1;
   min-width: 50px;
@@ -53,7 +54,7 @@ const Wrapper = styled.span`
   }
 `;
 
-const SmallWrapper = Wrapper.extend`
+const SmallWrapper = styled(Wrapper)`
   font-size: ${props => props.theme.fontSizes.xsmall};
   margin-bottom: 0;
   &::before {
@@ -63,7 +64,7 @@ const SmallWrapper = Wrapper.extend`
   &::after {
     top: 7px;
   }
-`
+`;
 
 const Tag = ({ tag, to }) => (
   <Wrapper>
@@ -71,11 +72,10 @@ const Tag = ({ tag, to }) => (
   </Wrapper>
 );
 
-export const SmallTag = ({tag, to}) => (
+export const SmallTag = ({ tag, to }) => (
   <SmallWrapper>
     <Link to={to || `/archive/tags/${tag}`}>{tag}</Link>
   </SmallWrapper>
-
-)
+);
 
 export default Tag;

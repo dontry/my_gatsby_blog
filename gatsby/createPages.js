@@ -1,8 +1,9 @@
 const path = require('path');
 const createArchivePages = require('./createArchivePages');
 
-module.exports = async ({ boundActionCreators, graphql }) => {
-  const { createPage } = boundActionCreators;
+// #Create pages in gatsby-node.js: https://www.gatsbyjs.org/docs/creating-and-modifying-pages/
+module.exports = async ({ actions, graphql }) => {
+  const { createPage } = actions;
   const blogPostTemplate = path.resolve(
     __dirname,
     '../src/templates/blog-post.js'
