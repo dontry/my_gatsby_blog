@@ -5,6 +5,7 @@
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
     "@babel/plugin-proposal-class-properties": "^7.2.3",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/preset-env": "^7.2.3",
     "@babel/preset-react": "^7.0.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.0-14",
@@ -37,13 +38,14 @@
     "format": "prettier --write 'src/**/*.js'",
     "test": "echo \"Error: no test specified\" && exit 1",
     "deploy": "gatsby build && gh-pages -d public -b master",
+    "gh-pages": "gh-pages -d public -b master",
     "flow": "flow"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.2.6",
     "babel-preset-flow": "^6.23.0",
     "eslint": "^4.19.1",
-    "babel-eslint": "^8.2.6",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-babel": "^7.0.2",
     "eslint-config-react": "^1.1.7",

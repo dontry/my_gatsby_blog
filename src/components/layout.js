@@ -22,7 +22,7 @@ const StyledContainer = styled(Container)`
     `};
 `;
 
-const Layout = ({ children }) => {
+const Layout = ({ children, location }) => {
   return (
     <ThemeProvider theme={theme}>
       <Fragment>

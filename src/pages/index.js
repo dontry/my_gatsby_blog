@@ -38,9 +38,9 @@ const CustomSidebar = styled(Sidebar)`
   position: relative;
 `;
 
-const IndexPage = () => {
+const IndexPage = props => {
   return (
-    <Layout>
+    <Layout location={props.location}>
       <StaticQuery
         query={query}
         render={data => {
