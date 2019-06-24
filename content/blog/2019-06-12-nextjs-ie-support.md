@@ -1,7 +1,7 @@
 ---
 date: '2019-06-12'
 title: 'Browser support issues in Next.js'
-excerpts: 'Tricks and hacks for browser compatability'
+excerpts: 'Tricks and hacks for browser compatibility'
 ---
 
 Browser compatibility is a pain in the arse for many front-end developers. Although most modern browsers have supported the new features or syntax which mitigates the issues, the notorious IE browser is likely to be haunting around for a couple of years. Thus it is essential for us to learn some tricks to address these issues.
@@ -10,9 +10,11 @@ When I decided to use Next.js to build the website, I didn't think too much abou
 
 ## JavaScript
 
+JavaScript compatibility takes syntax and new built-ins into account. The most essential tool to address JavaScript compatibility is Babel. [Babel] converts the new JavaScript code e.g. ES6+ into a backwards compatible version for older browsers or environments.
+
 ### @babel/preset-env
 
-The most essential tool to address JavaScript compatibility is Babel. [Babel] converts the new JavaScript code e.g. ES6+ into a backwards compatible version for older browsers or environments. Babel compiler has a wide range of plugins. The Babel community offers a preset environment **[@babel/preset-env]** to make our life easier. The default preset includes features in babel-preset-es2015, babel-preset-es2016 and babel-preset-es2017. If you have an array of preset environments, they will be loaded from right to left. It means you should put the most backwards preset at the right end.
+Babel compiler has a wide range of plugins. The Babel community offers a preset environment **[@babel/preset-env]** to make our life easier. The default preset includes features in babel-preset-es2015, babel-preset-es2016 and babel-preset-es2017. If you have an array of preset environments, they will be loaded from right to left. It means you should put the most backwards preset at the right end.
 
 the most basic **.babelrc**
 
@@ -24,7 +26,7 @@ the most basic **.babelrc**
 
 ### Browserlist
 
-If you want to include the polyfills and code transform for target browsers, you should then configure the [browserlist]. Browserlist is a very smart tool. It offers a range of semantic queries to identify the target browsers such as ">5%" ( larger than 5% global usage), "last 2 major versions", "ie 6-8" etc. You can either set the browserlist in the **.babelrc** or create an isolate **.browserlistrc** which is shared across other config files in the project.
+If you want to include the polyfills and code transform for target browsers, you should then configure the [browserlist]. Browserlist is a very smart tool. It offers a range of semantic queries to identify the target browsers such as ">5%" ( larger than 5% global usage), "last 2 major versions", "ie 6-8" etc. You can either set the browserlist in the **.babelrc** or create an isolated **.browserlistrc** file which is shared by other config files in the project.
 
 **.babelrc**
 
@@ -97,13 +99,46 @@ In lieu of **@babel/polyfill**, there is an alternative -- **@babel/plugin-trans
 
 ## CSS
 
+CSS used to be a big mess among different browsers. The notorious IE browsers are a nightmare to many developers. Besides, the inconsistent feature support made by different vendors causes a serious headache.
+There are various approaches to tackle this problem. I would introduce the most commonly used ways in the following.
+
+### PostCSS & Autoprefixer
+
+One of the most popular ways to mitigate the differences of CSS rules across browsers is [PostCSS]. More precisely, it's the [Autoprefixer] plugin. Basically, the plugin parses CSS and add vendor prefixes to CSS rules. To set up PostCSS in Next.js, you need to install **@zeit/next-css**, **postcss-loader** and optionally **postcss-preset-env**. Then create a **next.config.js** and a **postcss.config.js**.
+
+**next.config.js**
+
+```js
+const withPlugins = require('next-compose-plugins');
+const withCss = require('@zeit/next-css');
+
+module.exports = withPlugins([
+  [
+    withCss,
+    {
+      postcssLoaderOptions: {
+        parser: true,
+      },
+    },
+  ],
+]);
+```
+
+**postcss.config.js**
+
+```js
+module.exports = {
+  plugins: {
+    'postcss-preset-env': {},
+  },
+};
+```
+
+> You can add '_grid: true_' to enable the grid layout in IE. Personally, I don't recommend it. Because grid layout in IE behaves very different than other popular browsers. The config also picks up **.browserlistrc** setting. You can specify it as '_browser: "> 5%"_' in the config or create an isolated **.browserlist** file as mentioned above.
+
 ### <!--[if IE]>
 
 ### Property overrides
-
-### Can I Use
-
-###
 
 ### @supports
 
@@ -113,3 +148,6 @@ In lieu of **@babel/polyfill**, there is an alternative -- **@babel/plugin-trans
 [babel]: https://babeljs.io/docs/en/index.html
 [@babel/preset-env]: https://github.com/babel/babel-preset-env
 [browserlist]: https://github.com/browserslist/browserslist
+[postcss]: https://github.com/postcss/postcss
+[autoprefixer]: https://github.com/postcss/autoprefixer
+[css detection]: https://css-tricks.com/using-feature-detection-to-write-css-with-cross-browser-support/
