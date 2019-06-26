@@ -28,10 +28,10 @@ module.exports = (createPage, posts) => {
   });
 
   const tags = Object.keys(postsByTags);
-  const numOfpostsByTags = {};
+  const numOfPostsByTags = {};
 
   tags.forEach(tag => {
-    numOfpostsByTags[tag] = postsByTags[tag].length;
+    numOfPostsByTags[tag] = postsByTags[tag].length;
   });
 
   createPage({
@@ -39,14 +39,13 @@ module.exports = (createPage, posts) => {
     component: allTagsTemplate,
     context: {
       tags: tags.sort(),
-      nums: numOfpostsByTags,
+      nums: numOfPostsByTags,
       posts,
       years,
     },
   });
 
-
-  years = years.sort((a,b) => b - a);
+  years = years.sort((a, b) => b - a);
   years.forEach(year => {
     const posts = postsByYears[year];
 
@@ -55,7 +54,7 @@ module.exports = (createPage, posts) => {
       component: yearPageTemplate,
       context: {
         posts,
-        nums: numOfpostsByTags,
+        nums: numOfPostsByTags,
         year,
         years,
         tags,
@@ -71,7 +70,7 @@ module.exports = (createPage, posts) => {
       component: tagPageTemplate,
       context: {
         posts,
-        nums: numOfpostsByTags,
+        nums: numOfPostsByTags,
         tag,
         years,
         tags,

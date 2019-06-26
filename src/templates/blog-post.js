@@ -13,11 +13,54 @@ import Container from '../components/Container';
 import Button from '../components/Button';
 import Flex from '../components/Flex';
 import Layout from '../components/layout';
-import { StaticQuery, graphql } from 'gatsby';
+import { graphql } from 'gatsby';
 
-const query = graphql`
-  query BlogPostByPath($title: String!) {
-    markdownRemark(frontmatter: { title: { eq: $title } }) {
+const ButtonGroup = styled(Flex)`
+  justify-content: center;
+  & button {
+    margin-right: 20px;
+  }
+`;
+
+const BlogPostTemplate = ({ data, location, pathContext }) => {
+  const { next, prev } = pathContext;
+  const { markdownRemark: post } = data;
+  const { frontmatter, html, fields } = post;
+
+  const { title } = frontmatter;
+
+  const meta = {
+    date: fields.date,
+    tags: frontmatter.tags,
+  };
+
+  return (
+    <Layout>
+      <Container>
+        <Helmet title={`${title} - My blog`} />
+        <MarkdownDoc title={title} meta={meta} html={html} />
+        <ButtonGroup>
+          {prev && (
+            <Link to={prev.fields.path}>
+              <Button>Previous</Button>
+            </Link>
+          )}
+          {next && (
+            <Link to={next.fields.path}>
+              <Button>Next</Button>
+            </Link>
+          )}
+        </ButtonGroup>
+      </Container>
+    </Layout>
+  );
+};
+
+export default BlogPostTemplate;
+
+export const pageQuery = graphql`
+  query BlogPostBySlug($slug: String!) {
+    markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       frontmatter {
         title
@@ -32,56 +75,3 @@ const query = graphql`
     }
   }
 `;
-
-const ButtonGroup = styled(Flex)`
-  justify-content: center;
-  & button {
-    margin-right: 20px;
-  }
-`;
-
-const Template = ({ location, pathContext }) => {
-  const { next, prev } = pathContext;
-
-  return (
-    <Layout>
-      <StaticQuery
-        query={query}
-        render={data => {
-          console.log('post:', JSON.stringify(data.markdownRemark, null, 2));
-          const { markdownRemark: post } = data;
-
-          const { frontmatter, html, fields } = post;
-
-          const { title } = frontmatter;
-
-          const meta = {
-            date: fields.date,
-            tags: frontmatter.tags,
-          };
-
-          return (
-            <Container>
-              <Helmet title={`${title} - My blog`} />
-              <MarkdownDoc title={title} meta={meta} html={html} />
-              <ButtonGroup>
-                {prev && (
-                  <Link to={prev.fields.path}>
-                    <Button>Previous</Button>
-                  </Link>
-                )}
-                {next && (
-                  <Link to={next.fields.path}>
-                    <Button>Next</Button>
-                  </Link>
-                )}
-              </ButtonGroup>
-            </Container>
-          );
-        }}
-      />
-    </Layout>
-  );
-};
-
-export default Template;

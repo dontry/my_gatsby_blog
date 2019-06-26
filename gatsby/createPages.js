@@ -8,6 +8,7 @@ module.exports = async ({ actions, graphql }) => {
     __dirname,
     '../src/templates/blog-post.js'
   );
+
   const portfoliosTemplate = path.resolve(
     __dirname,
     '../src/templates/portfolios.js'
@@ -15,7 +16,7 @@ module.exports = async ({ actions, graphql }) => {
 
   const res = await graphql(`
     {
-      allMarkdownRemark(limit: 100) {
+      allMarkdownRemark(limit: 1000) {
         edges {
           node {
             html
@@ -47,18 +48,19 @@ module.exports = async ({ actions, graphql }) => {
     console.log(`node.fields: ${JSON.stringify(node.fields, null, 2)}`);
     const slug = node.fields.slug;
     const path = node.fields.path;
-    if (slug.includes('blog/') && typeof node.frontmatter.title === 'string') {
-      createPage({
-        path: path,
-        component: blogPostTemplate,
-        context: {
-          title: node.frontmatter.title,
-          slug,
-          prev: index === 0 ? null : posts[index - 1].node,
-          next: index === posts.length - 1 ? null : posts[index + 1].node,
-        },
-      });
-    }
+    const prev = index === posts.length - 1 ? null : posts[index + 1].node;
+    const next = index === 0 ? null : posts[index - 1].node;
+
+    createPage({
+      path: path,
+      component: blogPostTemplate,
+      context: {
+        title: node.frontmatter.title,
+        slug,
+        prev,
+        next,
+      },
+    });
   });
 
   createArchivePages(createPage, posts);

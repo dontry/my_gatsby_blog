@@ -1,6 +1,7 @@
 /* Called when a new node is created. Plugins whising to extend or transform nodes
 created by other plugins should implement this API
 */
+const { createFilePath } = require('gatsby-source-filesystem');
 
 //https://www.gatsbyjs.org/docs/mdx/programmatically-creating-pages/#generate-slugs
 const BLOG_POST_FILENAME_REGEX = /([0-9]+)\-([0-9]+)\-([0-9]+)\-(.+)\.md$/;
@@ -12,6 +13,8 @@ module.exports = exports.onCreateNode = ({ node, actions, getNode }) => {
   switch (node.internal.type) {
     case 'MarkdownRemark':
       const { permalink, redirect_from } = node.frontmatter;
+      const filePath = createFilePath({ node, getNode });
+      console.log(`filePath: ${filePath}`);
       const { relativePath } = getNode(node.parent);
 
       let path = node.frontmatter.path;

@@ -29,8 +29,8 @@ this.setState(prevState => ({
 }));
 ```
 
-The last thing should be noted is the (_componentDidCatch_)[https://reactjs.org/docs/react-component.html#componentdidcatch] method and the [_ErrorBoundary_](https://reactjs.org/docs/error-boundaries.html) component. I found the component didn't catch the error thrown by its child component which got me confused. I later found the [answer](https://github.com/facebook/react/issues/11334). What it says is that error boundaries only catch errors in lifecycle methods. If the error occurs in a Promise callback, it technically doesn't happen inside the lifecycle methods. So the error boundary won't catch it. In this case, you are supposed to handle the error for the Promise callback within the scope.
+The last thing should be noted is the [_componentDidCatch_](https://reactjs.org/docs/react-component.html#componentdidcatch) method and the [_ErrorBoundary_](https://reactjs.org/docs/error-boundaries.html) component. I found the component didn't catch the error thrown by its child component which got me confused. I later found the [answer](https://github.com/facebook/react/issues/11334). What it says is that error boundaries only catch errors in lifecycle methods. If the error occurs in a Promise callback, it technically doesn't happen inside the lifecycle methods. So the error boundary won't catch it. In this case, you are supposed to handle the error for the Promise callback within the scope.
 
 [lifecycle diagram]: http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
-[console screenshot]: ../../assets/img/react-lifecycle-log.png
-[update_number screenshot]: ../../assets/img/react-lifecycle-updatenumber.png
+[console screenshot]: ../images/react-lifecycle-log.png
+[update_number screenshot]: ../images/react-lifecycle-updatenumber.png
