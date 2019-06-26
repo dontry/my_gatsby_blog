@@ -13,11 +13,11 @@ import Container from '../components/Container';
 import Button from '../components/Button';
 import Flex from '../components/Flex';
 import Layout from '../components/layout';
-import { StaticQuery } from 'gatsby';
+import { StaticQuery, graphql } from 'gatsby';
 
 const query = graphql`
-  query BlogPostByPath($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
+  query BlogPostByPath($title: String!) {
+    markdownRemark(frontmatter: { title: { eq: $title } }) {
       html
       frontmatter {
         title
@@ -48,6 +48,7 @@ const Template = ({ location, pathContext }) => {
       <StaticQuery
         query={query}
         render={data => {
+          console.log('post:', JSON.stringify(data.markdownRemark, null, 2));
           const { markdownRemark: post } = data;
 
           const { frontmatter, html, fields } = post;

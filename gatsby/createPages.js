@@ -43,16 +43,16 @@ module.exports = async ({ actions, graphql }) => {
 
   const posts = res.data.allMarkdownRemark.edges;
 
-  createArchivePages(createPage, posts);
-
   posts.forEach(({ node }, index) => {
+    console.log(`node.fields: ${JSON.stringify(node.fields, null, 2)}`);
     const slug = node.fields.slug;
     const path = node.fields.path;
-    if (slug.includes('blog/')) {
+    if (slug.includes('blog/') && typeof node.frontmatter.title === 'string') {
       createPage({
         path: path,
         component: blogPostTemplate,
         context: {
+          title: node.frontmatter.title,
           slug,
           prev: index === 0 ? null : posts[index - 1].node,
           next: index === posts.length - 1 ? null : posts[index + 1].node,
@@ -61,6 +61,9 @@ module.exports = async ({ actions, graphql }) => {
     }
   });
 
+  createArchivePages(createPage, posts);
+
+  // portfoliosPage
   createPage({
     path: '/portfolios',
     component: portfoliosTemplate,
