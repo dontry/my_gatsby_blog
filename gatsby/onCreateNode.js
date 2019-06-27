@@ -14,13 +14,11 @@ module.exports = exports.onCreateNode = ({ node, actions, getNode }) => {
     case 'MarkdownRemark':
       const { permalink, redirect_from } = node.frontmatter;
       const filePath = createFilePath({ node, getNode });
-      console.log(`filePath: ${filePath}`);
       const { relativePath } = getNode(node.parent);
 
       let path = node.frontmatter.path;
       let slug;
 
-      console.log(`relativePath: ${relativePath}`);
       if (relativePath.includes('.md')) {
         const match = BLOG_POST_FILENAME_REGEX.exec(relativePath);
         const year = match[1];
@@ -31,8 +29,6 @@ module.exports = exports.onCreateNode = ({ node, actions, getNode }) => {
         slug = `/blog/${year}/${month}/${day}/${filename}.html`;
 
         const date = new Date(year, month - 1, day);
-
-        console.log(`slug: ${slug}`);
 
         createNodeField({
           node,

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Link from 'gatsby-link';
+import { Link } from 'gatsby';
 import { media } from '../../utils/theme';
 import { SmallTag } from '../Tag';
 import { darken } from 'polished';

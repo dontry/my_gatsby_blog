@@ -45,7 +45,6 @@ module.exports = async ({ actions, graphql }) => {
   const posts = res.data.allMarkdownRemark.edges;
 
   posts.forEach(({ node }, index) => {
-    console.log(`node.fields: ${JSON.stringify(node.fields, null, 2)}`);
     const slug = node.fields.slug;
     const path = node.fields.path;
     const prev = index === posts.length - 1 ? null : posts[index + 1].node;

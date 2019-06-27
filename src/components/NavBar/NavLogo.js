@@ -1,8 +1,8 @@
 import React from 'react';
-import Link from 'gatsby-link';
+import { Link } from 'gatsby';
 import styled from 'styled-components';
 import Logo from '../../images/logo.jpg';
-import {media} from '../../utils/theme'
+import { media } from '../../utils/theme';
 
 const StyledLink = styled(Link)`
   display: flex;

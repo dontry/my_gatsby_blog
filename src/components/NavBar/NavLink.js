@@ -2,7 +2,7 @@ import React from 'react';
 import { media } from '../../utils/theme';
 import styled from 'styled-components';
 import { lighten, darken } from 'polished';
-import Link from 'gatsby-link';
+import { Link } from 'gatsby';
 
 const StyledLink = styled(Link)`
     display: flex;
