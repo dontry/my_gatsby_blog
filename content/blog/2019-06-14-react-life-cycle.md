@@ -12,16 +12,16 @@ React component provides several "lifecycle methods" that you can hook in at par
 
 I made use of a few _console_ APIs to illustrate what happens in every lifecycle method and when they are called. Specially _console.groupStart()_ and _console.groupEnd()_ help me to visualize what happened in each method and cycle.
 
-![console](/images/react-lifecycle-log.png)
+![console](images/react-lifecycle-log.png)
 
 Let's go through how _this.setState_ works asynchronously. When the _loading_ is set to true in _componentDidUpdate_ method, it immediately goes to _shouldComponentUpdate_. If the condition is true, then it jumps to the _render_ method.
 
-![update_number](/images/react-lifecycle-updatenumber.png)
+![update_number](images/react-lifecycle-updatenumber.png)
 
 You can notice that **the Promise callback of updating number runs outside _didComponentUpdate_ method**. This state update then triggers another round of component rendering. Due to the nature of asynchronous update, you should always get a previous component state from the _this.setState_ callback arguments instead of using _this.state_.
 Otherwise, you may not get the consistent state for update.
 
-```js
+```javascript
 this.setState(prevState => ({
   number: number,
   status: [...prevState.status, number],
