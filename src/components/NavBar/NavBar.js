@@ -41,7 +41,7 @@ const NavWrapper = styled(Flex.withComponent('nav'))`
     `};
 `;
 
-const NavBar = ({ location = { pathname: '' } }) => {
+const NavBar = () => {
   return (
     <Header>
       <Container>

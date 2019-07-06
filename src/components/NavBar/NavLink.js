@@ -9,12 +9,8 @@ const StyledLink = styled(Link)`
     flex-direction: row;
     text-decoration: none;
     align-items: center;
-    color: ${props =>
-      props.activeStyle
-        ? props.theme.darkGrey
-        : lighten(0.1, props.theme.colors.darkGrey)};
-    background-color: ${props =>
-      props.activeStyle ? props.theme.colors.light : '#fff'};
+    color: ${props => lighten(0.1, props.theme.colors.darkGrey)};
+    background-color: ${props => '#fff'};
     transition: color 0.2s ease-out;
     padding-left: 15px;
     padding-right: 15px;
@@ -36,13 +32,23 @@ const StyledLink = styled(Link)`
         padding-right: 20px;
         font-size: ${props => props.theme.fontSizes.large}
     `}
+    &:hover {
+      text-decoration: none;
+    }
     $:hover:not(:focus) 
         color: ${props => props.theme.colors.darkGrey};
     }
 `;
 
-const NavLink = ({ isActive, title, to }) => (
-  <StyledLink to={to} activeStyle={isActive}>
+const NavLink = ({ title, to }) => (
+  <StyledLink
+    to={to}
+    activeClassName="active"
+    activeStyle={{
+      color: '#333',
+      backgroundColor: '#cecece',
+    }}
+  >
     {title}
   </StyledLink>
 );
