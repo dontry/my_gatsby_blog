@@ -16,6 +16,7 @@ import Layout from '../components/layout';
 import { graphql } from 'gatsby';
 
 const ButtonGroup = styled(Flex)`
+  margin-top: 50px;
   justify-content: center;
   & button {
     margin-right: 20px;
